@@ -47,4 +47,17 @@ public static class UIMethods
             }
         }
     }
+
+    /// <summary>
+    /// Prints Elements of a Question Answer List
+    /// </summary>
+    /// <param name="questionAnswerList">List to print of type Question-Answer</param>
+    public static void PrintQuestionAnswerList(List<QuestionAnswer> questionAnswerList)
+    {
+        foreach (var question in questionAnswerList)
+        {
+            Console.WriteLine(question);
+            Console.WriteLine();
+        }
+    }
 }

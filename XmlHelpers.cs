@@ -23,6 +23,10 @@ public static class XmlHelpers
         }
     }
 
+    /// <summary>
+    /// Loads List of Questions and Answers from XML File
+    /// </summary>
+    /// <returns>Loaded List</returns>
     public static List<QuestionAnswer> LoadXml()
     {
         var questionAnswerList = new List<QuestionAnswer>();

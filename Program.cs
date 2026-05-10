@@ -57,7 +57,35 @@ class Program
                     break;
 
                 case Constants.PlayMode.PlayQuiz:
+                    // Load Questions
                     questionAnswerList = XmlHelpers.LoadXml();
+
+                    // Sort question/answer list randomly
+                    questionAnswerList =
+                        questionAnswerList.OrderBy(LogicMethods.GenerateRandomNumberForSorting).ToList();
+
+                    int counter = 0;
+                    int userAnswer = 0;
+                    
+                    // Print Question to user, get user answer and evaluate it
+                    foreach (QuestionAnswer qa in questionAnswerList)
+                    {
+                        userAnswer = UIMethods.GetUserInputInt(qa.PrintQuestion());
+
+                        if (userAnswer == qa.CorrectAnswer)
+                        {
+                            counter++;
+                        }
+                    }
+
+                    // get score
+                    double score = 0;
+                    score = LogicMethods.GetScore(counter, questionAnswerList);
+                    
+
+                    // Display score to user
+                    UIMethods.DisplayMessage($"Quiz finished! Your Score: {score:F1}%");
+                    
                     break;
             }
         }

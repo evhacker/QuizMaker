@@ -8,6 +8,13 @@ public class QuestionAnswer
 
     public override string ToString()
     {
+        string text = PrintQuestion();
+        text += $"Correct Answer: {CorrectAnswer}";
+        return text;
+    }
+
+    public string PrintQuestion()
+    {
         string text = Question + "\n";
 
         for (int i = 0; i < AnswerOptions.Count; i++)
@@ -15,7 +22,6 @@ public class QuestionAnswer
             text += $"{i + 1}: {AnswerOptions[i]}\n";
         }
 
-        text += $"Correct Answer: {CorrectAnswer}";
         return text;
     }
 }

@@ -58,6 +58,11 @@ class Program
 
                 case Constants.PlayMode.PlayQuiz:
                     // Load Questions
+                    if (!File.Exists(Constants.FILENAME))
+                    {
+                        UIMethods.DisplayMessage("File does not exist - create quiz first!");
+                        return;
+                    }
                     questionAnswerList = XmlHelpers.LoadXml();
 
                     // Sort question/answer list randomly
@@ -66,7 +71,7 @@ class Program
 
                     int counter = 0;
                     int userAnswer = 0;
-                    
+
                     // Print Question to user, get user answer and evaluate it
                     foreach (QuestionAnswer qa in questionAnswerList)
                     {
@@ -81,11 +86,11 @@ class Program
                     // get score
                     double score = 0;
                     score = LogicMethods.GetScore(counter, questionAnswerList);
-                    
+
 
                     // Display score to user
                     UIMethods.DisplayMessage($"Quiz finished! Your Score: {score:F1}%");
-                    
+
                     break;
             }
         }

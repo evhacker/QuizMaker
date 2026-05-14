@@ -14,7 +14,7 @@ public static class XmlHelpers
 
         var path = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-            "questionanswers.xml"
+            Constants.FILENAME
         );
 
         using (FileStream file = File.Create(path))
@@ -32,8 +32,7 @@ public static class XmlHelpers
         var questionAnswerList = new List<QuestionAnswer>();
         var reader = new XmlSerializer(typeof(List<QuestionAnswer>));
         var path = Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-            "questionanswers.xml");
+            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), Constants.FILENAME);
         using (FileStream file = File.Open(path, FileMode.Open))
         {
             questionAnswerList = (List<QuestionAnswer>)reader.Deserialize(file);
